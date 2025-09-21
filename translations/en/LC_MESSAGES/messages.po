@@ -1,0 +1,370 @@
+# English translations for Digi Kul Teachers Portal
+# Copyright (C) 2024 Digi Kul
+# This file is distributed under the same license as the Digi Kul project.
+# FIRST AUTHOR <email@example.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Digi Kul 1.0\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-01-01 12:00+0000\n"
+"PO-Revision-Date: 2024-01-01 12:00+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.12.1\n"
+
+#: templates/base.html:677
+msgid "Digi Kul"
+msgstr "Digi Kul"
+
+#: templates/base.html:678
+msgid "Welcome, %(name)s • %(type)s"
+msgstr "Welcome, %(name)s • %(type)s"
+
+#: templates/base.html:682
+msgid "Admin Dashboard"
+msgstr "Admin Dashboard"
+
+#: templates/base.html:684
+msgid "Teacher Dashboard"
+msgstr "Teacher Dashboard"
+
+#: templates/base.html:686
+msgid "Student Dashboard"
+msgstr "Student Dashboard"
+
+#: templates/base.html:688
+msgid "Logout"
+msgstr "Logout"
+
+#: templates/index.html:6
+msgid "Welcome to Digi Kul"
+msgstr "Welcome to Digi Kul"
+
+#: templates/index.html:7
+msgid "A simple portal for teachers and students"
+msgstr "A simple portal for teachers and students"
+
+#: templates/index.html:12
+msgid "Admin Login"
+msgstr "Admin Login"
+
+#: templates/index.html:13
+msgid "Login"
+msgstr "Login"
+
+#: templates/index.html:18
+msgid "Go to Teacher Dashboard"
+msgstr "Go to Teacher Dashboard"
+
+#: templates/index.html:20
+msgid "Go to Admin Dashboard"
+msgstr "Go to Admin Dashboard"
+
+#: templates/index.html:22
+msgid "Go to Student Dashboard"
+msgstr "Go to Student Dashboard"
+
+#: templates/index.html:31
+msgid "DigiKul Highlights"
+msgstr "DigiKul Highlights"
+
+#: templates/index.html:32
+msgid "Low-bandwidth e-learning built for reliability"
+msgstr "Low-bandwidth e-learning built for reliability"
+
+#: templates/index.html:38
+msgid "Audio-first live classes"
+msgstr "Audio-first live classes"
+
+#: templates/index.html:42
+msgid "Adaptive quality"
+msgstr "Adaptive quality"
+
+#: templates/index.html:46
+msgid "Offline downloads"
+msgstr "Offline downloads"
+
+#: templates/index.html:50
+msgid "Device-to-device sharing"
+msgstr "Device-to-device sharing"
+
+#: templates/index.html:54
+msgid "Push-to-talk"
+msgstr "Push-to-talk"
+
+#: templates/index.html:58
+msgid "Real-time chat & quizzes"
+msgstr "Real-time chat & quizzes"
+
+#: templates/index.html:61
+msgid "🔴 Checking server status..."
+msgstr "🔴 Checking server status..."
+
+#: templates/index.html:76
+msgid "🟢 Server Online - Active Sessions: %(sessions)s"
+msgstr "🟢 Server Online - Active Sessions: %(sessions)s"
+
+#: templates/index.html:82
+msgid "🔴 Server Offline"
+msgstr "🔴 Server Offline"
+
+#: templates/login.html:6
+msgid "Login to Digi Kul"
+msgstr "Login to Digi Kul"
+
+#: templates/login.html:7
+msgid "Enter your credentials to access your account"
+msgstr "Enter your credentials to access your account"
+
+#: templates/login.html:12
+msgid "Email Address"
+msgstr "Email Address"
+
+#: templates/login.html:16
+msgid "Password"
+msgstr "Password"
+
+#: templates/login.html:20
+msgid "User Type"
+msgstr "User Type"
+
+#: templates/login.html:22
+msgid "Teacher"
+msgstr "Teacher"
+
+#: templates/login.html:23
+msgid "Student"
+msgstr "Student"
+
+#: templates/login.html:24
+msgid "Admin"
+msgstr "Admin"
+
+#: templates/login.html:27
+msgid "Login"
+msgstr "Login"
+
+#: templates/login.html:30
+msgid "Don't have an account?"
+msgstr "Don't have an account?"
+
+#: templates/login.html:31
+msgid "Register here"
+msgstr "Register here"
+
+#: templates/register.html:6
+msgid "Register for Digi Kul"
+msgstr "Register for Digi Kul"
+
+#: templates/register.html:7
+msgid "Create your account to get started"
+msgstr "Create your account to get started"
+
+#: templates/register.html:12
+msgid "Full Name"
+msgstr "Full Name"
+
+#: templates/register.html:16
+msgid "Email Address"
+msgstr "Email Address"
+
+#: templates/register.html:20
+msgid "Institution"
+msgstr "Institution"
+
+#: templates/register.html:24
+msgid "Subject (for teachers)"
+msgstr "Subject (for teachers)"
+
+#: templates/register.html:28
+msgid "Password"
+msgstr "Password"
+
+#: templates/register.html:32
+msgid "Confirm Password"
+msgstr "Confirm Password"
+
+#: templates/register.html:35
+msgid "User Type"
+msgstr "User Type"
+
+#: templates/register.html:37
+msgid "Teacher"
+msgstr "Teacher"
+
+#: templates/register.html:38
+msgid "Student"
+msgstr "Student"
+
+#: templates/register.html:41
+msgid "Register"
+msgstr "Register"
+
+#: templates/register.html:44
+msgid "Already have an account?"
+msgstr "Already have an account?"
+
+#: templates/register.html:45
+msgid "Login here"
+msgstr "Login here"
+
+#: templates/teacher_dashboard.html:6
+msgid "Teacher Dashboard"
+msgstr "Teacher Dashboard"
+
+#: templates/teacher_dashboard.html:7
+msgid "Manage your lectures and teaching materials"
+msgstr "Manage your lectures and teaching materials"
+
+#: templates/student_dashboard.html:6
+msgid "Student Dashboard"
+msgstr "Student Dashboard"
+
+#: templates/student_dashboard.html:7
+msgid "Access your lectures and learning materials"
+msgstr "Access your lectures and learning materials"
+
+#: templates/admin_dashboard.html:6
+msgid "Admin Dashboard"
+msgstr "Admin Dashboard"
+
+#: templates/admin_dashboard.html:7
+msgid "Manage users, cohorts, and system settings"
+msgstr "Manage users, cohorts, and system settings"
+
+#: templates/logout.html:6
+msgid "Logged Out Successfully"
+msgstr "Logged Out Successfully"
+
+#: templates/logout.html:7
+msgid "You have been securely logged out of your account."
+msgstr "You have been securely logged out of your account."
+
+#: templates/logout.html:10
+msgid "Return to Home"
+msgstr "Return to Home"
+
+#: templates/logout.html:11
+msgid "Login Again"
+msgstr "Login Again"
+
+#: templates/live_session.html:6
+msgid "Live Session"
+msgstr "Live Session"
+
+#: templates/live_session.html:7
+msgid "Join the live classroom session"
+msgstr "Join the live classroom session"
+
+#: templates/teacher_live_session.html:6
+msgid "Manage Live Session"
+msgstr "Manage Live Session"
+
+#: templates/teacher_live_session.html:7
+msgid "Control your live classroom session"
+msgstr "Control your live classroom session"
+
+#: templates/student_live_session.html:6
+msgid "Join Live Session"
+msgstr "Join Live Session"
+
+#: templates/student_live_session.html:7
+msgid "Participate in the live classroom session"
+msgstr "Participate in the live classroom session"
+
+#: Language switcher
+msgid "Language"
+msgstr "Language"
+
+msgid "English"
+msgstr "English"
+
+msgid "हिन्दी"
+msgstr "हिन्दी"
+
+#: Additional strings
+msgid "Welcome"
+msgstr "Welcome"
+
+msgid "Welcome Back"
+msgstr "Welcome Back"
+
+msgid "Sign in to your Digi Kul account"
+msgstr "Sign in to your Digi Kul account"
+
+msgid "Enter your email address"
+msgstr "Enter your email address"
+
+msgid "Enter your password"
+msgstr "Enter your password"
+
+msgid "Select your role"
+msgstr "Select your role"
+
+msgid "Sign In"
+msgstr "Sign In"
+
+msgid "Need admin access?"
+msgstr "Need admin access?"
+
+msgid "Access admin dashboard"
+msgstr "Access admin dashboard"
+
+#: Teacher Dashboard
+msgid "My Lectures"
+msgstr "My Lectures"
+
+msgid "My Cohorts"
+msgstr "My Cohorts"
+
+msgid "Create Lecture"
+msgstr "Create Lecture"
+
+msgid "Upload Materials"
+msgstr "Upload Materials"
+
+msgid "Live Sessions"
+msgstr "Live Sessions"
+
+msgid "Create Lecture for Cohort"
+msgstr "Create Lecture for Cohort"
+
+msgid "Students in Cohort"
+msgstr "Students in Cohort"
+
+msgid "Upload Material"
+msgstr "Upload Material"
+
+msgid "Manage Polls"
+msgstr "Manage Polls"
+
+msgid "View Students"
+msgstr "View Students"
+
+msgid "Students"
+msgstr "Students"
+
+#: Student Dashboard
+msgid "Student Dashboard"
+msgstr "Student Dashboard"
+
+msgid "Available Lectures"
+msgstr "Available Lectures"
+
+msgid "Enrolled Lectures"
+msgstr "Enrolled Lectures"
+
+msgid "Polls"
+msgstr "Polls"
+
+msgid "Join cohorts to access lectures and materials"
+msgstr "Join cohorts to access lectures and materials"
+
+msgid "Browse and enroll in available lectures"
+msgstr "Browse and enroll in available lectures"

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-{% block title %}Teacher Dashboard • Digi Kul{% endblock %}
-{% block header_title %}Teacher Dashboard{% endblock %}
+{% block title %}{{ get_translation('Teacher Dashboard', session.get('language', 'en')) }} • {{ get_translation('Digi Kul', session.get('language', 'en')) }}{% endblock %}
+{% block header_title %}{{ get_translation('Teacher Dashboard', session.get('language', 'en')) }}{% endblock %}
 {% block content %}
 <!-- Custom styles for teacher dashboard specific elements -->
     <style>
@@ -201,25 +201,25 @@
         }
     </style>
         <div class="tabs">
-            <button class="tab active" onclick="switchTab('lectures')">📚 My Lectures</button>
-            <button class="tab" onclick="switchTab('cohorts')">🏫 My Cohorts</button>
-            <button class="tab" onclick="switchTab('create')">➕ Create Lecture</button>
-            <button class="tab" onclick="switchTab('materials')">📁 Upload Materials</button>
-            <button class="tab" onclick="switchTab('live')">🔴 Live Sessions</button>
+            <button class="tab active" onclick="switchTab('lectures')">📚 {{ get_translation('My Lectures', session.get('language', 'en')) }}</button>
+            <button class="tab" onclick="switchTab('cohorts')">🏫 {{ get_translation('My Cohorts', session.get('language', 'en')) }}</button>
+            <button class="tab" onclick="switchTab('create')">➕ {{ get_translation('Create Lecture', session.get('language', 'en')) }}</button>
+            <button class="tab" onclick="switchTab('materials')">📁 {{ get_translation('Upload Materials', session.get('language', 'en')) }}</button>
+            <button class="tab" onclick="switchTab('live')">🔴 {{ get_translation('Live Sessions', session.get('language', 'en')) }}</button>
         </div>
         
         <!-- Lectures Tab -->
         <div id="lectures" class="tab-content active">
-            <h2>My Lectures</h2>
+            <h2>{{ get_translation('My Lectures', session.get('language', 'en')) }}</h2>
             <div id="lectures-list"></div>
         </div>
         
         <!-- Cohorts Tab -->
         <div id="cohorts" class="tab-content">
-            <h2>My Cohorts</h2>
+            <h2>{{ get_translation('My Cohorts', session.get('language', 'en')) }}</h2>
             <div id="cohorts-list"></div>
             <div id="cohort-create-lecture" style="display:none; margin-top:1rem;" class="lecture-card">
-                <h3 id="cohort-create-title">Create Lecture for Cohort</h3>
+                <h3 id="cohort-create-title">{{ get_translation('Create Lecture for Cohort', session.get('language', 'en')) }}</h3>
                 <form id="cohort-lecture-form">
                     <input type="hidden" id="cohort-create-id" value="">
                     <div class="form-group">

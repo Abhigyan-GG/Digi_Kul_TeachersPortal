@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ session.get('language', 'en') }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Digi Kul Teachers Portal{% endblock %}</title>
+    <title>{% block title %}{{ _('Digi Kul') }} Teachers Portal{% endblock %}</title>
     
     <!-- Security and Cache Prevention Headers -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, private">
@@ -674,18 +674,27 @@
     {% if session.get('user_id') %}
     <div class="header">
         <div>
-            <h1>🎓 {% block header_title %}Digi Kul{% endblock %}</h1>
-            <p>Welcome, {{ session.get('user_name') }} • {{ session.get('user_type')|title }}</p>
+            <h1>🎓 {% block header_title %}{{ get_translation('Digi Kul', session.get('language', 'en')) }}{% endblock %}</h1>
+            <p>{{ get_translation('Welcome, %(name)s • %(type)s', session.get('language', 'en'))|format(name=session.get('user_name'), type=session.get('user_type')|title) }}</p>
         </div>
         <div class="header-actions">
             {% if session.get('user_type') == 'admin' %}
-                <a href="/admin_dashboard" style="color: white; text-decoration: none;">Admin Dashboard</a>
+                <a href="/admin_dashboard" style="color: white; text-decoration: none;">{{ get_translation('Admin Dashboard', session.get('language', 'en')) }}</a>
             {% elif session.get('user_type') == 'teacher' %}
-                <a href="/teacher_dashboard" style="color: white; text-decoration: none;">Teacher Dashboard</a>
+                <a href="/teacher_dashboard" style="color: white; text-decoration: none;">{{ get_translation('Teacher Dashboard', session.get('language', 'en')) }}</a>
             {% elif session.get('user_type') == 'student' %}
-                <a href="/student_dashboard" style="color: white; text-decoration: none;">Student Dashboard</a>
+                <a href="/student_dashboard" style="color: white; text-decoration: none;">{{ get_translation('Student Dashboard', session.get('language', 'en')) }}</a>
             {% endif %}
-            <button class="logout-btn" onclick="logout()">Logout</button>
+            
+            <!-- Language Switcher -->
+            <div class="language-switcher" style="display: inline-block; margin-right: 1rem;">
+                <select onchange="changeLanguage(this.value)" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 0.5rem; border-radius: 0.5rem; font-size: 0.875rem;">
+                    <option value="en" {% if session.get('language', 'en') == 'en' %}selected{% endif %}>🇺🇸 English</option>
+                    <option value="hi" {% if session.get('language', 'en') == 'hi' %}selected{% endif %}>🇮🇳 हिन्दी</option>
+                </select>
+            </div>
+            
+            <button class="logout-btn" onclick="logout()">{{ get_translation('Logout', session.get('language', 'en')) }}</button>
         </div>
     </div>
     {% endif %}
@@ -720,6 +729,10 @@
                 console.error(err); 
                 window.location.href = '/'; 
             }
+        }
+        
+        function changeLanguage(language) {
+            window.location.href = '/set_language/' + language;
         }
         
         // Auto-hide flash messages

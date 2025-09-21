@@ -29,3 +29,12 @@ class Config:
     AUDIO_BITRATE = '48k'
     IMAGE_QUALITY = 30
     PDF_COMPRESSION_LEVEL = 3
+    
+    # Babel configuration
+    LANGUAGES = {
+        'en': 'English',
+        'hi': 'हिन्दी'
+    }
+    BABEL_DEFAULT_LOCALE = 'en'
+    BABEL_DEFAULT_TIMEZONE = 'UTC'
+    BABEL_TRANSLATION_DIRECTORIES = 'translations'

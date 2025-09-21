@@ -1,25 +1,25 @@
 {% extends 'base.html' %}
-{% block title %}Welcome • Digi Kul{% endblock %}
+{% block title %}{{ get_translation('Welcome', session.get('language', 'en')) }} • {{ get_translation('Digi Kul', session.get('language', 'en')) }}{% endblock %}
 {% block content %}
 <div class="card" style="max-width: 800px; margin: 2rem auto;">
   <div class="card-header">
-    <h1 class="card-title">Welcome to Digi Kul</h1>
-    <p class="card-subtitle">A simple portal for teachers and students</p>
+    <h1 class="card-title">{{ get_translation('Welcome to Digi Kul', session.get('language', 'en')) }}</h1>
+    <p class="card-subtitle">{{ get_translation('A simple portal for teachers and students', session.get('language', 'en')) }}</p>
   </div>
   <div class="card-body">
     {% if not session.get('user_id') %}
       <div class="flex gap-4 justify-center">
-        <a href="/admin_login" class="btn btn-primary">Admin Login</a>
-        <a href="/login" class="btn btn-secondary">Login</a>
+        <a href="/admin_login" class="btn btn-primary">{{ get_translation('Admin Login', session.get('language', 'en')) }}</a>
+        <a href="/login" class="btn btn-secondary">{{ get_translation('Login', session.get('language', 'en')) }}</a>
       </div>
     {% else %}
       <div class="text-center">
         {% if session.get('user_type') == 'teacher' %}
-          <a href="/teacher_dashboard" class="btn btn-primary btn-lg">Go to Teacher Dashboard</a>
+          <a href="/teacher_dashboard" class="btn btn-primary btn-lg">{{ get_translation('Go to Teacher Dashboard', session.get('language', 'en')) }}</a>
         {% elif session.get('user_type') == 'admin' %}
-          <a href="/admin_dashboard" class="btn btn-primary btn-lg">Go to Admin Dashboard</a>
+          <a href="/admin_dashboard" class="btn btn-primary btn-lg">{{ get_translation('Go to Admin Dashboard', session.get('language', 'en')) }}</a>
         {% else %}
-          <a href="/student_dashboard" class="btn btn-primary btn-lg">Go to Student Dashboard</a>
+          <a href="/student_dashboard" class="btn btn-primary btn-lg">{{ get_translation('Go to Student Dashboard', session.get('language', 'en')) }}</a>
         {% endif %}
       </div>
     {% endif %}
@@ -28,37 +28,37 @@
 
 <div class="card" style="margin-top: 2rem;">
   <div class="card-header">
-    <h2 class="card-title">DigiKul Highlights</h2>
-    <p class="card-subtitle">Low-bandwidth e-learning built for reliability</p>
+    <h2 class="card-title">{{ _('DigiKul Highlights') }}</h2>
+    <p class="card-subtitle">{{ _('Low-bandwidth e-learning built for reliability') }}</p>
   </div>
   <div class="card-body">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
       <div class="flex items-center gap-2">
         <span style="color: var(--success); font-size: 1.2rem;">✓</span>
-        <span>Audio-first live classes</span>
+        <span>{{ _('Audio-first live classes') }}</span>
       </div>
       <div class="flex items-center gap-2">
         <span style="color: var(--success); font-size: 1.2rem;">✓</span>
-        <span>Adaptive quality</span>
+        <span>{{ _('Adaptive quality') }}</span>
       </div>
       <div class="flex items-center gap-2">
         <span style="color: var(--success); font-size: 1.2rem;">✓</span>
-        <span>Offline downloads</span>
+        <span>{{ _('Offline downloads') }}</span>
       </div>
       <div class="flex items-center gap-2">
         <span style="color: var(--success); font-size: 1.2rem;">✓</span>
-        <span>Device-to-device sharing</span>
+        <span>{{ _('Device-to-device sharing') }}</span>
       </div>
       <div class="flex items-center gap-2">
         <span style="color: var(--success); font-size: 1.2rem;">✓</span>
-        <span>Push-to-talk</span>
+        <span>{{ _('Push-to-talk') }}</span>
       </div>
       <div class="flex items-center gap-2">
         <span style="color: var(--success); font-size: 1.2rem;">✓</span>
-        <span>Real-time chat & quizzes</span>
+        <span>{{ _('Real-time chat & quizzes') }}</span>
       </div>
     </div>
-    <div id="status" class="alert error" style="margin-top: 1rem;">🔴 Checking server status...</div>
+    <div id="status" class="alert error" style="margin-top: 1rem;">{{ _('🔴 Checking server status...') }}</div>
   </div>
 </div>
 
@@ -73,13 +73,13 @@
         statusDiv.style.background = '#d4edda';
         statusDiv.style.color = '#155724';
         statusDiv.style.border = '1px solid #c3e6cb';
-                    statusDiv.innerHTML = `🟢 Server Online - Active Sessions: ${data.active_sessions}`;
+                    statusDiv.innerHTML = `🟢 {{ _('Server Online - Active Sessions: %(sessions)s', sessions='') }}${data.active_sessions}`;
                 } else {
                     statusDiv.className = 'status offline';
         statusDiv.style.background = '#f8d7da';
         statusDiv.style.color = '#721c24';
         statusDiv.style.border = '1px solid #f5c6cb';
-                    statusDiv.innerHTML = '🔴 Server Offline';
+                    statusDiv.innerHTML = '{{ _("🔴 Server Offline") }}';
                 }
     } catch(e){
                 const statusDiv = document.getElementById('status');
@@ -87,7 +87,7 @@
       statusDiv.style.background = '#f8d7da';
       statusDiv.style.color = '#721c24';
       statusDiv.style.border = '1px solid #f5c6cb';
-                statusDiv.innerHTML = '🔴 Server Offline';
+                statusDiv.innerHTML = '{{ _("🔴 Server Offline") }}';
             }
         }
         checkStatus();

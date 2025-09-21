@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, send_file, render_template, session, redirect, url_for, flash, make_response
 from flask_cors import CORS
+from flask_babel import Babel, gettext, ngettext, get_locale
 try:
     from flask_socketio import SocketIO, emit, join_room, leave_room, rooms
 except ImportError:
@@ -24,6 +25,37 @@ db = DatabaseManager()
 
 app = Flask(__name__)
 app.config.from_object(Config)
+
+# Initialize Babel
+babel = Babel(app)
+
+def get_locale():
+    # Check if language is set in session
+    if 'language' in session:
+        return session['language']
+    # Check if language is set in request args
+    if request.args.get('lang'):
+        return request.args.get('lang')
+    # Default to English
+    return request.accept_languages.best_match(app.config['LANGUAGES'].keys()) or app.config['BABEL_DEFAULT_LOCALE']
+
+# Set the locale selector function
+babel.locale_selector_func = get_locale
+
+# Add template context processor for translations
+@app.context_processor
+def inject_translations():
+    """Inject translation functions into templates"""
+    from flask_babel import force_locale, gettext as _gettext
+    
+    def get_translation(text, locale=None):
+        """Get translation for text in specified locale"""
+        if locale and locale in app.config['LANGUAGES']:
+            with force_locale(locale):
+                return _gettext(text)
+        return _gettext(text)
+    
+    return dict(get_translation=get_translation)
 
 # Enhanced session security configuration
 app.secret_key = os.environ.get('SECRET_KEY', 'your-secret-key-change-this')
@@ -279,6 +311,13 @@ def validate_token(token):
 def index():
     """Landing page"""
     return render_template('index.html')
+
+@app.route('/set_language/<language>')
+def set_language(language=None):
+    """Set the language for the session"""
+    if language and language in app.config['LANGUAGES']:
+        session['language'] = language
+    return redirect(request.referrer or url_for('index'))
 
 @app.route('/login')
 def login_page():

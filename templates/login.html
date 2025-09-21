@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Login • Digi Kul{% endblock %}
+{% block title %}{{ get_translation('Login', session.get('language', 'en')) }} • {{ get_translation('Digi Kul', session.get('language', 'en')) }}{% endblock %}
 {% block content %}
 <div class="login-container" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); position: relative; overflow: hidden; margin: -2rem -1rem; padding: 2rem 1rem;">
   <!-- Background Elements -->
@@ -10,31 +10,39 @@
   </div>
   
   <div class="card" style="max-width: 450px; margin: 2rem; position: relative; z-index: 2; backdrop-filter: blur(10px); background: rgba(255,255,255,0.95); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 25px 50px rgba(0,0,0,0.15);">
+    <!-- Language Switcher for Login Page -->
+    <div style="position: absolute; top: 1rem; right: 1rem; z-index: 10;">
+      <select onchange="changeLanguage(this.value)" style="background: rgba(255,255,255,0.9); color: var(--gray-700); border: 1px solid var(--gray-300); padding: 0.5rem; border-radius: 0.5rem; font-size: 0.875rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <option value="en" {% if session.get('language', 'en') == 'en' %}selected{% endif %}>🇺🇸 English</option>
+        <option value="hi" {% if session.get('language', 'en') == 'hi' %}selected{% endif %}>🇮🇳 हिन्दी</option>
+      </select>
+    </div>
+    
     <div class="card-header" style="text-align: center; padding: 2rem 2rem 1rem 2rem;">
       <div class="logo-container" style="margin-bottom: 1rem;">
         <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 20px; margin: 0 auto; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);">
           <span style="font-size: 2.5rem; color: white;">🎓</span>
         </div>
       </div>
-      <h2 class="card-title" style="margin-bottom: 0.5rem; color: var(--gray-900);">{% if admin_mode %}Admin Login{% else %}Welcome Back{% endif %}</h2>
-      <p class="card-subtitle" style="color: var(--gray-600);">{% if admin_mode %}Access admin dashboard{% else %}Sign in to your Digi Kul account{% endif %}</p>
+      <h2 class="card-title" style="margin-bottom: 0.5rem; color: var(--gray-900);">{% if admin_mode %}{{ get_translation('Admin Login', session.get('language', 'en')) }}{% else %}{{ get_translation('Welcome Back', session.get('language', 'en')) }}{% endif %}</h2>
+      <p class="card-subtitle" style="color: var(--gray-600);">{% if admin_mode %}{{ get_translation('Access admin dashboard', session.get('language', 'en')) }}{% else %}{{ get_translation('Sign in to your Digi Kul account', session.get('language', 'en')) }}{% endif %}</p>
     </div>
     <div class="card-body" style="padding: 1rem 2rem 2rem 2rem;">
       <form id="loginForm" onsubmit="login(event)">
         <div class="form-group">
           <label for="email" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; font-weight: 600; color: var(--gray-700);">
             <span style="font-size: 1.2rem;">📧</span>
-            Email Address
+            {{ get_translation('Email Address', session.get('language', 'en')) }}
           </label>
-          <input type="email" name="email" id="email" placeholder="Enter your email address" required style="padding: 1rem; border: 2px solid var(--gray-200); border-radius: 12px; font-size: 1rem; transition: all 0.3s ease; background: var(--gray-50);" />
+          <input type="email" name="email" id="email" placeholder="{{ get_translation('Enter your email address', session.get('language', 'en')) }}" required style="padding: 1rem; border: 2px solid var(--gray-200); border-radius: 12px; font-size: 1rem; transition: all 0.3s ease; background: var(--gray-50);" />
         </div>
         <div class="form-group">
           <label for="password" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; font-weight: 600; color: var(--gray-700);">
             <span style="font-size: 1.2rem;">🔒</span>
-            Password
+            {{ get_translation('Password', session.get('language', 'en')) }}
           </label>
           <div style="position: relative;">
-            <input type="password" name="password" id="password" placeholder="Enter your password" required style="padding: 1rem; border: 2px solid var(--gray-200); border-radius: 12px; font-size: 1rem; transition: all 0.3s ease; background: var(--gray-50); width: 100%;" />
+            <input type="password" name="password" id="password" placeholder="{{ get_translation('Enter your password', session.get('language', 'en')) }}" required style="padding: 1rem; border: 2px solid var(--gray-200); border-radius: 12px; font-size: 1rem; transition: all 0.3s ease; background: var(--gray-50); width: 100%;" />
             <button type="button" onclick="togglePassword()" style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 1.2rem; color: var(--gray-500);">👁️</button>
           </div>
         </div>
@@ -44,19 +52,19 @@
           <div class="form-group">
             <label for="user_type" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; font-weight: 600; color: var(--gray-700);">
               <span style="font-size: 1.2rem;">👤</span>
-              User Type
+              {{ get_translation('User Type', session.get('language', 'en')) }}
             </label>
             <select id="user_type" required style="padding: 1rem; border: 2px solid var(--gray-200); border-radius: 12px; font-size: 1rem; transition: all 0.3s ease; background: var(--gray-50); width: 100%;">
-              <option value="">Select your role</option>
-              <option value="teacher">👨‍🏫 Teacher</option>
-              <option value="student">👨‍🎓 Student</option>
+              <option value="">{{ get_translation('Select your role', session.get('language', 'en')) }}</option>
+              <option value="teacher">👨‍🏫 {{ get_translation('Teacher', session.get('language', 'en')) }}</option>
+              <option value="student">👨‍🎓 {{ get_translation('Student', session.get('language', 'en')) }}</option>
             </select>
           </div>
         {% endif %}
         <div class="form-group" style="margin-top: 1.5rem;">
           <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem; font-weight: 600; border-radius: 12px; background: linear-gradient(135deg, var(--primary), var(--secondary)); box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3); transition: all 0.3s ease;">
             <span style="margin-right: 0.5rem;">🚀</span>
-            Sign In
+            {{ get_translation('Sign In', session.get('language', 'en')) }}
           </button>
         </div>
       </form>
@@ -64,10 +72,10 @@
       
       {% if not admin_mode %}
       <div style="text-align: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--gray-200);">
-        <p style="color: var(--gray-600); margin-bottom: 0.5rem;">Need admin access?</p>
+        <p style="color: var(--gray-600); margin-bottom: 0.5rem;">{{ get_translation('Need admin access?', session.get('language', 'en')) }}</p>
         <a href="/admin_login" style="color: var(--primary); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 8px; background: rgba(102, 126, 234, 0.1); transition: all 0.3s ease;">
           <span>🔑</span>
-          Admin Login
+          {{ get_translation('Admin Login', session.get('language', 'en')) }}
         </a>
       </div>
       {% endif %}

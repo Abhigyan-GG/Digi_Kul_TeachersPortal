@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
-{% block title %}Student Dashboard • Digi Kul{% endblock %}
-{% block header_title %}Student Dashboard{% endblock %}
+{% block title %}{{ get_translation('Student Dashboard', session.get('language', 'en')) }} • {{ get_translation('Digi Kul', session.get('language', 'en')) }}{% endblock %}
+{% block header_title %}{{ get_translation('Student Dashboard', session.get('language', 'en')) }}{% endblock %}
 {% block content %}
 <div class="tabs">
-    <button class="tab active" onclick="switchTab('cohorts', event)">🏫 My Cohorts</button>
-    <button class="tab" onclick="switchTab('available', event)">📚 Available Lectures</button>
-    <button class="tab" onclick="switchTab('enrolled', event)">📖 Enrolled Lectures</button>
-    <button class="tab" onclick="switchTab('polls', event)">📊 Polls</button>
+    <button class="tab active" onclick="switchTab('cohorts', event)">🏫 {{ get_translation('My Cohorts', session.get('language', 'en')) }}</button>
+    <button class="tab" onclick="switchTab('available', event)">📚 {{ get_translation('Available Lectures', session.get('language', 'en')) }}</button>
+    <button class="tab" onclick="switchTab('enrolled', event)">📖 {{ get_translation('Enrolled Lectures', session.get('language', 'en')) }}</button>
+    <button class="tab" onclick="switchTab('polls', event)">📊 {{ get_translation('Polls', session.get('language', 'en')) }}</button>
 </div>
 
 <!-- Cohorts Tab -->
 <div id="cohorts" class="tab-content active">
     <div class="card-header">
-        <h2 class="card-title">My Cohorts</h2>
-        <p class="card-subtitle">Join cohorts to access lectures and materials</p>
+        <h2 class="card-title">{{ get_translation('My Cohorts', session.get('language', 'en')) }}</h2>
+        <p class="card-subtitle">{{ get_translation('Join cohorts to access lectures and materials', session.get('language', 'en')) }}</p>
     </div>
     <div id="cohorts-list"></div>
 </div>
@@ -21,8 +21,8 @@
 <!-- Available Lectures Tab -->
 <div id="available" class="tab-content">
     <div class="card-header">
-        <h2 class="card-title">Available Lectures</h2>
-        <p class="card-subtitle">Browse and enroll in available lectures</p>
+        <h2 class="card-title">{{ get_translation('Available Lectures', session.get('language', 'en')) }}</h2>
+        <p class="card-subtitle">{{ get_translation('Browse and enroll in available lectures', session.get('language', 'en')) }}</p>
     </div>
     <div id="available-list"></div>
 </div>
